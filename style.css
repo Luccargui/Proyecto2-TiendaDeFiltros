@@ -332,6 +332,7 @@ padding: var(--padding-3) 0px;
 margin-bottom: var(--margin-3);
   font-size: var(--size-2);
   cursor: pointer;
+  color: var(--color-black);
 }
 button:active{
   background-color: var(--color-button-2);

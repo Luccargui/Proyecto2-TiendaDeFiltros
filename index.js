@@ -161,7 +161,7 @@ iconFilter.src = "./assets/header/iconfilter.png";
 iconFilter.alt = "icono-filtro";
 iconFilter.addEventListener("click", () => {
   toggleFilters();
-  filtersPlace.scrollIntoView({ behavior: "smooth" });
+  coverImg.scrollIntoView({ behavior: "smooth" });
 });
 
 
