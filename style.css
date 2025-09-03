@@ -452,7 +452,7 @@ justify-content: end;
     height: 120px;
   }
   #h2Section.visible>h2 {
-  font-size: var(--size-0-1);
+  font-size: var(--size-1);
   padding-top: var(--padding-2);
 }
  .card {
