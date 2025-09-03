@@ -215,7 +215,7 @@ font-weight: bold;
 }
 #h2Section.visible>h2 {
   padding-top: var(--padding-3);
-  font-size: var(--size-1);
+  font-size: var(--size-0-1);
 }
 
 select, option,input{
@@ -452,7 +452,7 @@ justify-content: end;
     height: 120px;
   }
   #h2Section.visible>h2 {
-  font-size: var(--size-1);
+  font-size: var(--size-0-1);
   padding-top: var(--padding-2);
 }
  .card {
