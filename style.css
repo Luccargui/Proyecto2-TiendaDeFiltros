@@ -374,6 +374,9 @@ padding: var(--padding-3) var(--padding-1);
   .hero>img {
     height: 200px;
   }
+  #filterToggle>img{
+  left: 49%;
+ }
 }
 @media (max-width:960px) {
   .hero {
@@ -382,6 +385,9 @@ padding: var(--padding-3) var(--padding-1);
   .hero>img {
     height: 175px;
   }
+  #filterToggle>img{
+  left: 48.5%;
+ }
 }
 @media (max-width: 700px) {
    .hero {
@@ -427,6 +433,11 @@ margin-bottom: 0px;
   font-size: var(--size-2);
 }
 }
+@media (max-width: 650px) {
+   #filterToggle>img{
+  left: 48%;
+ }
+}
 @media (min-width: 571px) {
   #menu2.openMenu {
   display: none;
@@ -451,6 +462,9 @@ justify-content: end;
   .hero>img {
     height: 120px;
   }
+  #filterToggle>img{
+  left: 47.5%;
+ }
   #h2Section.visible>h2 {
   font-size: var(--size-1);
   padding-top: var(--padding-2);
