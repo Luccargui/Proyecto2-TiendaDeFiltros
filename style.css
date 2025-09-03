@@ -463,7 +463,7 @@ justify-content: end;
     height: 120px;
   }
   #filterToggle>img{
-  left: 47.5%;
+  left: 47%;
  }
   #h2Section.visible>h2 {
   font-size: var(--size-1);
