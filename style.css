@@ -446,18 +446,16 @@ justify-content: end;
   }
  .card {
   height: 275px;
-  width: 130px;
+  width: 125px;
 }
 .divCard {
-  width: 130px;
+  width: 125px;
 }
 .divCard> img {
-  width: 130px;
+  width: 125px;
 }
 .card>div:last-child{
-
-  padding: var(--padding-3) var(--padding-1) var(--padding-1) var(--padding-1);
-
+padding: var(--padding-3) var(--padding-1) var(--padding-1) var(--padding-1);
 }
 .card>div:last-child>div:first-child {
   padding: 0px;
