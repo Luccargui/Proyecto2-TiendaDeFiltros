@@ -139,7 +139,7 @@ header {
 
 .divsMenu>ul>li, #menu2>ul>li {
 color: var(--color-bg-1);
-font-size: var(--size-1)
+font-size: var(--size-3);
 }
 .divsMenu>ul>li:hover, #menu2>ul>li:hover, footer>div>ul>li>a:hover {
   text-decoration: underline;
@@ -437,6 +437,9 @@ margin-bottom: 0px;
    #filterToggle>img{
   left: 48%;
  }
+ .divsMenu>ul>li, #menu2>ul>li {
+font-size: var(--size-1)
+}
 }
 @media (min-width: 571px) {
   #menu2.openMenu {
