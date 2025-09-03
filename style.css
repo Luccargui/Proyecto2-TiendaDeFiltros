@@ -262,7 +262,7 @@ bottom: -15px;
   flex-wrap: wrap;
   background-color: var(--color-bg-1);
   gap: var(--gap-5);
-  margin: var(--margin-8) var(--margin-3) var(--margin-4) var(--margin-3);
+  margin: var(--margin-7) var(--margin-3) var(--margin-4) var(--margin-3);
   justify-content: center;
   align-items: center;
 }
