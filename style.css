@@ -205,7 +205,6 @@ font-weight: bold;
   width: 100%;
   height: auto;
   padding-top: var(--padding-3);
- 
 }
 #filtersPlace.visible {
  background-color: var(--color-bg-2);
@@ -214,8 +213,9 @@ font-weight: bold;
    background-color: var(--color-bg-1);
    text-align: center;
 }
-#h2Section.visible>p {
-  font-size: var(--size-2);
+#h2Section.visible>h2 {
+  padding-top: var(--padding-3);
+  font-size: var(--size-1);
 }
 
 select, option,input{
@@ -451,8 +451,9 @@ justify-content: end;
   .hero>img {
     height: 120px;
   }
-  #h2Section.visible>p {
-  font-size: var(--size-0-1);
+  #h2Section.visible>h2 {
+  font-size: var(--size-1);
+  padding-top: var(--padding-2);
 }
  .card {
   height: 275px;
