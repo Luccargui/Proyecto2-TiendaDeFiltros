@@ -201,11 +201,15 @@ font-weight: bold;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: var(--gap-2);
   width: 100%;
   height: auto;
   padding-top: var(--padding-3);
   background-color: var(--color-bg-2);
+}
+#h2Section.visible>p {
+  font-size: var(--size-3);
 }
 
 select, option,input{
@@ -440,6 +444,47 @@ justify-content: end;
   .hero>img {
     height: 100px;
   }
+ .card {
+  height: 275px;
+  width: 120px;
+}
+.divCard {
+  width: 120px;
+}
+.divCard> img {
+  width: 120px;
+}
+.card>div:last-child{
+
+  padding: var(--padding-3) var(--padding-1) var(--padding-1) var(--padding-1);
+
+}
+.card>div:last-child>div:first-child {
+  padding: 0px;
+}
+.card>div:last-child>div:first-child>div:first-child>p{
+  font-size: var(--size-0-1);
+  margin-block-start: var(--margin-1);
+  margin-block-end: margin;
+}
+.card>div:last-child>div:first-child>div:last-child>p{
+  font-size: var(--size-0-1);
+  margin-block-start: var(--margin-1);
+  margin-block-end: var(--margin-3);
+
+}
+.card>div:last-child>div:first-child>div:last-child>p:last-of-type {
+ padding-right: var(--padding-2);
+}
+
+button {
+ width: 90%;
+height: 10px;
+padding: var(--padding-1) 0px;
+margin-bottom: 0px;
+font-size: var(--size-1);
+}
+
   footer {
     flex-direction: column;
      height: auto;
