@@ -212,6 +212,7 @@ font-weight: bold;
 }
 #h2Section.visible {
    background-color: var(--color-bg-1);
+   text-align: center;
 }
 #h2Section.visible>p {
   font-size: var(--size-2);
@@ -451,7 +452,7 @@ justify-content: end;
     height: 120px;
   }
   #h2Section.visible>p {
-  font-size: var(--size-1);
+  font-size: var(--size-0-1);
 }
  .card {
   height: 275px;
