@@ -215,7 +215,7 @@ font-weight: bold;
 }
 #h2Section.visible>h2 {
   padding-top: var(--padding-3);
-  font-size: var(--size-0-1);
+  font-size: var(--size-2);
 }
 
 select, option,input{
