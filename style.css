@@ -446,13 +446,13 @@ justify-content: end;
   }
  .card {
   height: 275px;
-  width: 140px;
+  width: 130px;
 }
 .divCard {
-  width: 140px;
+  width: 130px;
 }
 .divCard> img {
-  width: 140px;
+  width: 130px;
 }
 .card>div:last-child{
 
