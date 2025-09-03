@@ -446,13 +446,13 @@ justify-content: end;
   }
  .card {
   height: 275px;
-  width: 120px;
+  width: 150px;
 }
 .divCard {
-  width: 120px;
+  width: 150px;
 }
 .divCard> img {
-  width: 120px;
+  width: 150px;
 }
 .card>div:last-child{
 
@@ -465,7 +465,7 @@ justify-content: end;
 .card>div:last-child>div:first-child>div:first-child>p{
   font-size: var(--size-0-1);
   margin-block-start: var(--margin-1);
-  margin-block-end: margin;
+  margin-block-end: 0px;
 }
 .card>div:last-child>div:first-child>div:last-child>p{
   font-size: var(--size-0-1);
