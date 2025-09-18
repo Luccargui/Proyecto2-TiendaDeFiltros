@@ -116,17 +116,21 @@ const zapatillas = [
 const header = document.querySelector("header");
 const footer = document.querySelector("footer");
 const main = document.createElement("main");
-document.body.insertBefore(main, footer);
+  document.body.insertBefore(main, footer);
 
-const menu = document.createElement("div");
+const menu = document.createElement("nav");
 const logoMenu = document.createElement("img");
 const divOpcionesMenu = document.createElement("div");
 const divMenuIcons = document.createElement("div");
 const ulOpcionesMenu = document.createElement("ul");
 const li1OpcionesMenu = document.createElement("li");
+const aLi1OpcionesMenu = document.createElement("a");
 const li2OpcionesMenu = document.createElement("li");
+const aLi2OpcionesMenu = document.createElement("a");
 const li3OpcionesMenu = document.createElement("li");
+const aLi3OpcionesMenu = document.createElement("a");
 const li4OpcionesMenu = document.createElement("li");
+const aLi4OpcionesMenu = document.createElement("a");
 const burgerMenu = document.createElement("img");
 const iconFilter = document.createElement("img");
 const divShoppingBasket = document.createElement("div");
@@ -134,6 +138,7 @@ const shoppingBasket = document.createElement("img");
 const numberOfItemsSold = document.createElement("p");
 const user = document.createElement("img");
 
+//ABRIR Y CERRAR PARTE DEL FILTRO
 const toggleFilters = () => {
   mainDivFilter.classList.toggle("visible");
   if (imgFilter.src.includes("iconArrowDownward.png")) {
@@ -142,34 +147,45 @@ const toggleFilters = () => {
     imgFilter.src = "./assets/otros/iconArrowDownward.png";
   }
 };
-menu.id = "menu";
-logoMenu.src = "./assets/header/logo.png";
-logoMenu.alt = "logo-menu";
-divOpcionesMenu.classList.add("divsMenu");
-divMenuIcons.classList.add("divsMenu");
-li1OpcionesMenu.innerHTML = "Hombres";
-li2OpcionesMenu.innerHTML = "Mujeres";
-li3OpcionesMenu.innerHTML = "Niños";
-li4OpcionesMenu.innerHTML = "Ofertas";
-burgerMenu.src = "./assets/header/iconBurgerMenu.png";
-burgerMenu.alt = "menu-burger";
-burgerMenu.classList.add("burgerMenu");
-burgerMenu.addEventListener("click", () => {
-  divMenu2.classList.toggle("openMenu");
-});
-iconFilter.src = "./assets/header/iconfilter.png";
-iconFilter.alt = "icono-filtro";
-iconFilter.addEventListener("click", () => {
-  toggleFilters();
-  coverImg.scrollIntoView({ behavior: "smooth" });
-});
+
+//MENU NAVEGACIÓN
+  menu.id = "menu";
+  logoMenu.src = "./assets/header/logo.png";
+  logoMenu.alt = "logo-menu";
+  divOpcionesMenu.classList.add("divsMenu");
+  divMenuIcons.classList.add("divsMenu");
+aLi1OpcionesMenu.textContent = "Hombres";
+aLi1OpcionesMenu.setAttribute("href", "https://www.jdsports.es/page/hombre-jd/");
+aLi1OpcionesMenu.setAttribute("target", "_blank");
+aLi2OpcionesMenu.textContent = "Mujeres";
+aLi2OpcionesMenu.setAttribute("href", "https://www.jdsports.es/page/mujer-jd/");
+aLi2OpcionesMenu.setAttribute("target", "_blank");
+aLi3OpcionesMenu.textContent = "Niños";
+aLi3OpcionesMenu.setAttribute("href", "https://www.jdsports.es/page/ninos-jd/");
+aLi3OpcionesMenu.setAttribute("target", "_blank");
+aLi4OpcionesMenu.textContent = "Ofertas";
+aLi4OpcionesMenu.setAttribute("href", "https://www.jdsports.es/ofertas/");
+aLi4OpcionesMenu.setAttribute("target", "_blank");
+
+  burgerMenu.src = "./assets/header/iconBurgerMenu.png";
+  burgerMenu.alt = "menu-burger";
+  burgerMenu.classList.add("burgerMenu");
+  burgerMenu.addEventListener("click", () => {
+    navMenu2.classList.toggle("openMenu");
+  });
+  iconFilter.src = "./assets/header/iconfilter.png";
+  iconFilter.alt = "icono-filtro";
+  iconFilter.addEventListener("click", () => {
+    toggleFilters();
+    coverImg.scrollIntoView({ behavior: "smooth" });
+  });
 
 
-shoppingBasket.src = "./assets/header/iconShoppingBasket.png";
-numberOfItemsSold.innerHTML = "";
-shoppingBasket.alt = "carrito";
-user.src = "./assets/header/iconUserAvatar.png";
-user.alt = "avatar-user";
+  shoppingBasket.src = "./assets/header/iconShoppingBasket.png";
+  numberOfItemsSold.innerHTML = "";
+  shoppingBasket.alt = "carrito";
+  user.src = "./assets/header/iconUserAvatar.png";
+  user.alt = "avatar-user";
 
 header.appendChild(menu);
 menu.appendChild(logoMenu);
@@ -181,58 +197,82 @@ ulOpcionesMenu.appendChild(li1OpcionesMenu);
 ulOpcionesMenu.appendChild(li2OpcionesMenu);
 ulOpcionesMenu.appendChild(li3OpcionesMenu);
 ulOpcionesMenu.appendChild(li4OpcionesMenu);
+li1OpcionesMenu.appendChild(aLi1OpcionesMenu);
+li2OpcionesMenu.appendChild(aLi2OpcionesMenu);
+li3OpcionesMenu.appendChild(aLi3OpcionesMenu);
+li4OpcionesMenu.appendChild(aLi4OpcionesMenu);
 divMenuIcons.appendChild(iconFilter);
 divMenuIcons.appendChild(divShoppingBasket);
 divMenuIcons.appendChild(user);
 divShoppingBasket.appendChild(shoppingBasket);
 divShoppingBasket.appendChild(numberOfItemsSold);
 
-const divMenu2 = document.createElement("div");
+//MENU MÓVIL
+const navMenu2 = document.createElement("nav");
 const ulMenu2 = document.createElement("ul");
 const li1Menu2 = document.createElement("li");
+const aLi1Menu2 = document.createElement("a");
 const li2Menu2 = document.createElement("li");
+const aLi2Menu2 = document.createElement("a");
 const li3Menu2 = document.createElement("li");
+const aLi3Menu2 = document.createElement("a");
 const li4Menu2 = document.createElement("li");
+const aLi4Menu2 = document.createElement("a");
 
-divMenu2.id = "menu2";
-li1Menu2.textContent = "Hombres";
-li2Menu2.textContent = "Mujeres";
-li3Menu2.textContent = "Niños";
-li4Menu2.textContent = "Ofertas";
-header.appendChild(divMenu2);
-divMenu2.appendChild(ulMenu2);
+  navMenu2.id = "menu2";
+  aLi1Menu2.textContent = "Hombres";
+  aLi2Menu2.textContent = "Mujeres";
+  aLi3Menu2.textContent = "Niños";
+  aLi4Menu2.textContent = "Ofertas";
+  aLi1Menu2.setAttribute("href", "https://www.jdsports.es/page/hombre-jd/");
+  aLi1Menu2.setAttribute("target", "_blank");
+  aLi2Menu2.setAttribute("href", "https://www.jdsports.es/page/mujer-jd/");
+  aLi2Menu2.setAttribute("target", "_blank");
+  aLi3Menu2.setAttribute("href", "https://www.jdsports.es/page/ninos-jd/");
+  aLi3Menu2.setAttribute("target", "_blank");
+  aLi4Menu2.setAttribute("href", "https://www.jdsports.es/ofertas/");
+  aLi4Menu2.setAttribute("target", "_blank");
+
+header.appendChild(navMenu2);
+navMenu2.appendChild(ulMenu2);
 ulMenu2.appendChild(li1Menu2);
+li1Menu2.appendChild(aLi1Menu2);
 ulMenu2.appendChild(li2Menu2);
+li2Menu2.appendChild(aLi2Menu2);
 ulMenu2.appendChild(li3Menu2);
+li3Menu2.appendChild(aLi3Menu2);
 ulMenu2.appendChild(li4Menu2);
+li4Menu2.appendChild(aLi4Menu2);
 
+//SECCIÓN HERO
 const heroSection = document.createElement("section");
 const divHeroSection = document.createElement("div");
 const coverImg = document.createElement("img");
-divHeroSection.classList.add("hero");
-coverImg.src = "./assets/header/hero.jpg";
-coverImg.alt = "hero-image";
-divHeroSection.appendChild(coverImg);
-heroSection.appendChild(divHeroSection);
-main.appendChild(heroSection);
+  divHeroSection.classList.add("hero");
+  coverImg.src = "./assets/header/hero.jpg";
+  coverImg.alt = "hero-image";
+  divHeroSection.appendChild(coverImg);
+  heroSection.appendChild(divHeroSection);
+  main.appendChild(heroSection);
 
+  //SECCIÓN FILTROS
 const filterSection = document.createElement("section");
 const mainDivFilter = document.createElement("div");
 const secondaryDivFilter = document.createElement("div");
 const imgFilter = document.createElement("img");
 
-imgFilter.src = "./assets/otros/iconArrowDownward.png";
-secondaryDivFilter.appendChild(imgFilter);
-imgFilter.addEventListener("click", toggleFilters);
+  imgFilter.src = "./assets/otros/iconArrowDownward.png";
+  secondaryDivFilter.appendChild(imgFilter);
+  imgFilter.addEventListener("click", toggleFilters);
 
-mainDivFilter.id = "filtersPlace";
+  mainDivFilter.id = "filtersPlace";
 
-secondaryDivFilter.id = "filterToggle";
+  secondaryDivFilter.id = "filterToggle";
 filterSection.appendChild(mainDivFilter);
 filterSection.appendChild(secondaryDivFilter);
 main.appendChild(filterSection);
 
-
+//CREA ARRAY PARA CREAR SELECT
 const createArray = (array, param) => {
   const result = [];
   for (const element of array) {
@@ -246,69 +286,75 @@ const createArray = (array, param) => {
 const arrayMarcas = createArray(zapatillas, "marca");
 const arrayModelos = createArray(zapatillas, "modelo");
 
+//CREA SELECT Y OPCIONES PARA PODER HACER EL FILTRO POR SEGÚN MARCA
 const createSelect = (array, placeholder = "Todas las opciones") => {
   const select = document.createElement("select");
   const defaultOption = document.createElement("option");
-  defaultOption.value = "";
-  defaultOption.textContent = placeholder;
-  select.appendChild(defaultOption);
+    defaultOption.value = "";
+    defaultOption.textContent = placeholder;
+    select.appendChild(defaultOption);
   for (const element of array) {
     const option = document.createElement("option");
-    option.value = element;
-    option.textContent = element;
-    select.appendChild(option);
-  }
+      option.value = element;
+      option.textContent = element;
+      select.appendChild(option);
+    }
   return select;
 };
 
 const selectBrands = createSelect(arrayMarcas, "Todas las marcas");
 mainDivFilter.appendChild(selectBrands);
-
+//PRECIO MÁXIMO
 const inputMaxPrice = document.createElement("input");
-inputMaxPrice.placeholder = "Precio Máximo";
+  inputMaxPrice.placeholder = "Precio Máximo";
 mainDivFilter.appendChild(inputMaxPrice);
 
+//BOTÓN DE FILTRAR
 const filtrarButton = document.createElement("button");
-filtrarButton.classList.add("filterButton");
-filtrarButton.textContent = "Filtrar";
+  filtrarButton.classList.add("filterButton");
+  filtrarButton.textContent = "Filtrar";
 mainDivFilter.appendChild(filtrarButton);
 
+//BOTÓN DE LIMPIAR
 const cleanButton = document.createElement("button");
-cleanButton.classList.add("filterButton");
-cleanButton.textContent = "Limpiar";
+  cleanButton.classList.add("filterButton");
+  cleanButton.textContent = "Limpiar";
 mainDivFilter.appendChild(cleanButton);
 
+//SECCIÓN POR SI NO HAY NINGUNA COINCIDENCIA
 const h2Section = document.createElement("section");
 const h2Suggestion = document.createElement("h2");
-h2Section.id= "h2Section";
- h2Suggestion.textContent = "¡OH, NO! Lo sentimos, pero no hay ningún resultado disponible. No obstante, quizá te guste alguna de estas opciones disponibles 😉";
+  h2Section.id= "h2Section";
+  h2Suggestion.textContent = "¡OH, NO! Lo sentimos, pero no hay ningún resultado disponible. No obstante, quizá te guste alguna de estas opciones disponibles 😉";
 h2Section.appendChild(h2Suggestion);
 main.appendChild(h2Section);
 
+
+//SECCIÓN DE LAS ZAPATILLAS
 const zapasSection = document.createElement("section");
-zapasSection.id = "zapas";
+  zapasSection.id = "zapas";
 main.appendChild(zapasSection);
 
+//FUNCIÓN DE IMPRIMIR ZATAPILLAS
 const printZapas = (zapas) => {
   zapasSection.innerHTML = "";
 
   for (const zapa of zapas) {
     const divCard = document.createElement("div");
-    const divImg = document.createElement("div");
+    const figure = document.createElement("figure");
     const imgCard = document.createElement("img");
-    const divInfoCard = document.createElement("div");
-    const divTextCard = document.createElement("div");
-    const divBrand = document.createElement("div");
+    const infoSection = document.createElement("section");
     const textBrand = document.createElement("p");
     const divModelPrice = document.createElement("div");
     const textModel = document.createElement("p");
     const textPrice = document.createElement("p");
-    const divButton = document.createElement("div");
     const buyButton = document.createElement("button");
 
+    // Clases
     divCard.classList.add("card");
-    divImg.classList.add("divCard");
+    figure.classList.add("divCard");
 
+    // Contenido
     imgCard.src = zapa.imagen;
     imgCard.alt = zapa.modelo;
     textBrand.textContent = zapa.marca;
@@ -316,6 +362,7 @@ const printZapas = (zapas) => {
     textPrice.textContent = `${zapa.precio}€`;
     buyButton.textContent = "Comprar";
 
+    // Eventos
     buyButton.addEventListener("click", () => {
       let count = parseInt(numberOfItemsSold.textContent) || 0;
       count++;
@@ -327,30 +374,31 @@ const printZapas = (zapas) => {
       window.open(zapa.enlace, "_blank");
     });
 
+    // Estructura
     zapasSection.appendChild(divCard);
-    divCard.appendChild(divImg);
-    divCard.appendChild(divInfoCard);
-    divImg.appendChild(imgCard);
-    divInfoCard.appendChild(divTextCard);
-    divInfoCard.appendChild(divButton);
-    divTextCard.appendChild(divBrand);
-    divTextCard.appendChild(divModelPrice);
-    divBrand.appendChild(textBrand);
+    divCard.appendChild(figure);
+    divCard.appendChild(infoSection);
+    figure.appendChild(imgCard);
+
+    infoSection.appendChild(textBrand);
+    infoSection.appendChild(divModelPrice);
+    infoSection.appendChild(buyButton);
+
     divModelPrice.appendChild(textModel);
     divModelPrice.appendChild(textPrice);
-    divButton.appendChild(buyButton);
   }
 };
 
 printZapas(zapatillas);
 
+//FUNCIÓN FILTRO
 const filter = () => {
   const marcaSeleccionada = selectBrands.value;
   const valorMax = parseInt(inputMaxPrice.value);
   const filtered = [];
 
   for (const zapa of zapatillas) {
-    const precioNum = parseInt(zapa.precio.replace("€", "").trim());
+    const precioNum = parseFloat(zapa.precio.replace("€", "").trim());
 
     if (
       (marcaSeleccionada === "" || marcaSeleccionada === zapa.marca) &&
@@ -364,7 +412,7 @@ const filter = () => {
        h2Section.classList.remove("visible");
   } else {
     
-h2Section.classList.add("visible");
+  h2Section.classList.add("visible");
     const randomZapas = [];
 
     while (randomZapas.length < 3 && randomZapas.length < zapatillas.length) {
@@ -391,8 +439,7 @@ cleanButton.addEventListener("click", () => {
   printZapas(zapatillas);
 });
 
-
-
+//FOOTER
 
 const footerItems = [
   {
@@ -438,18 +485,18 @@ footerItems.forEach(divObject => {
   // Primer li con título
   const liTitle = document.createElement("li");
   const pTitle = document.createElement("p");
-  pTitle.textContent = divObject.Title;
-  liTitle.appendChild(pTitle);
-  ulFooter.appendChild(liTitle);
+    pTitle.textContent = divObject.Title;
+    liTitle.appendChild(pTitle);
+    ulFooter.appendChild(liTitle);
 
   // Resto de li con enlaces
   divObject.pLink.forEach((text, i) => {
     const li = document.createElement("li");
     const a = document.createElement("a");
-    a.textContent = text;
-    a.setAttribute("href", divObject.Link[i]);
-    li.appendChild(a);
-    ulFooter.appendChild(li);
+      a.textContent = text;
+      a.setAttribute("href", divObject.Link[i]);
+      li.appendChild(a);
+      ulFooter.appendChild(li);
   });
 
   divFooter.appendChild(ulFooter);
