@@ -125,7 +125,7 @@ header {
   cursor: pointer;
 }
 #menu>img:hover {
-  transform: scale(1.1);
+  transform: scale(1.1) rotate(360deg);
 }
 
 .divsMenu, .divsMenu>ul {
@@ -136,7 +136,9 @@ header {
 .divsMenu>ul {
   margin-left: var(--margin-7);
 }
-
+.divsMenu img:hover {
+  filter: brightness(0) saturate(100%) invert(85%) sepia(100%) saturate(5000%) hue-rotate(5deg);
+}
 .divsMenu>ul>li>a, #menu2>ul>li>a {
 color: var(--color-bg-1);
 font-size: var(--size-1);
