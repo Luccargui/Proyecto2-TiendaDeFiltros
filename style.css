@@ -164,7 +164,7 @@ position: relative;
 padding: 4px var(--padding-1);
 border-radius: 50%;
 top:-2px;
-right:-9px;
+right:px;
 position: absolute;
 z-index: 3;
 font-weight: bold;
@@ -219,6 +219,77 @@ font-weight: bold;
   padding-top: var(--padding-3);
   font-size: var(--size-2);
 }
+.divZapasSelec {
+  position: absolute;
+  top: 40px;
+  right: 0px;
+  width: 300px;
+
+  /* estado cerrado */
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+
+  background: var(--color-bg-1);
+  border: 1px solid #ddd;
+  border-radius: 0px 0px 0px var(--border-radius-1);
+  box-shadow: var(--box-shadow);
+  padding: 0; 
+  z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+
+  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+.divZapasSelec.abierto {
+  min-height: 20px;
+  max-height: 70vh;
+  opacity: 1;
+  overflow-y: auto;
+  padding: var(--padding-2); 
+}
+.divPSZ {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 10px;
+  max-height: 150px;
+border-bottom: 1px solid;
+}
+.divPSZ>figure{
+  width: 40%;
+  height: auto;
+}
+.divPSZ>figure>img{
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+.divPSZ>div {
+  display: flex;
+  flex-direction: column;
+  width:55%;
+  padding: var(--padding-2) var(--padding-1);
+  justify-content: flex-start;
+  gap: var(--gap-1);
+}
+.divPSZ>div p {
+  font-size: var(--size-1);
+}
+.divPSZ>div>div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.divPSZ>div>div:last-of-type {
+ max-width: 30px;
+gap: var(--gap-2);
+}
+
 
 select, option,input{
   font-size: var(--size-0-1);

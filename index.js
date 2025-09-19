@@ -181,6 +181,25 @@ aLi4OpcionesMenu.setAttribute("target", "_blank");
   });
 
 
+divShoppingBasket.addEventListener("click", () => { 
+  if (divZapasSeleccionadas.classList.contains("abierto")) {
+    divZapasSeleccionadas.classList.remove("abierto");
+  } else {
+    divZapasSeleccionadas.classList.add("abierto");
+    printSelectedZapas();
+  }
+});
+
+document.addEventListener("click", (e) => {
+  // Si clic fuera del carrito y no es botón de comprar → cerrar
+  if (
+    !divShoppingBasket.contains(e.target) &&
+    !divZapasSeleccionadas.contains(e.target) &&
+    !e.target.closest("button") // permite que no se cierre al comprar
+  ) {
+    divZapasSeleccionadas.classList.remove("abierto");
+  }
+});
   shoppingBasket.src = "./assets/header/iconShoppingBasket.png";
   numberOfItemsSold.innerHTML = "";
   shoppingBasket.alt = "carrito";
@@ -335,6 +354,27 @@ const zapasSection = document.createElement("section");
   zapasSection.id = "zapas";
 main.appendChild(zapasSection);
 
+let zapatillasSeleccionadas = [];
+
+// FUNCIÓN AÑADIR ZAPAS AL CARRITO
+const addToCart = (zapa) => {
+  // Buscar si ya existe en el carrito
+  const found = zapatillasSeleccionadas.find(item => item.modelo === zapa.modelo);
+
+  if (found) {
+    found.cantidad += 1;
+  } else {
+    zapatillasSeleccionadas.push({ ...zapa, cantidad: 1 });
+  }
+
+  // Actualizar contador del carrito
+  let totalCantidad = zapatillasSeleccionadas.reduce((acc, item) => acc + item.cantidad, 0);
+  numberOfItemsSold.textContent = totalCantidad;
+  numberOfItemsSold.classList.add("shopping");
+
+  // Imprimir carrito en vivo
+  printSelectedZapas();
+};
 //FUNCIÓN DE IMPRIMIR ZATAPILLAS
 const printZapas = (zapas) => {
   zapasSection.innerHTML = "";
@@ -363,13 +403,10 @@ const printZapas = (zapas) => {
     buyButton.textContent = "Comprar";
 
     // Eventos
-    buyButton.addEventListener("click", () => {
-      let count = parseInt(numberOfItemsSold.textContent) || 0;
-      count++;
-      numberOfItemsSold.textContent = count;
-      numberOfItemsSold.classList.add("shopping");
-    });
-
+  buyButton.addEventListener("click", (e) => {
+  e.stopPropagation(); // evita que cierre el carrito
+  addToCart(zapa);
+});
     imgCard.addEventListener("click", () => {
       window.open(zapa.enlace, "_blank");
     });
@@ -390,6 +427,113 @@ const printZapas = (zapas) => {
 };
 
 printZapas(zapatillas);
+//ESPACIO IMPRESIÓN ZAPAS SELECCIONADAS
+
+const divZapasSeleccionadas= document.createElement("div");
+divZapasSeleccionadas.classList.add("divZapasSelec");
+menu.appendChild(divZapasSeleccionadas);
+
+
+
+//FUNCIÓN IMPRIMIR ZAPAS SELECCIONADAS
+const printSelectedZapas = () => {
+  divZapasSeleccionadas.innerHTML = "";
+
+ if (zapatillasSeleccionadas.length === 0) {
+    let pMessage = document.createElement("p");
+    pMessage.textContent = "No hay ninguna zapatilla seleccionada";
+    divZapasSeleccionadas.appendChild(pMessage);
+    return; // salir para que no intente imprimir nada más
+  }
+
+  for (const zapa of zapatillasSeleccionadas) {
+    const divPrintedSelectedZapa = document.createElement("div");
+    const figureSelectedZapa = document.createElement("figure");
+    const imgSelectedZapa = document.createElement("img");
+    const divInfoSelectedZapa = document.createElement("div");
+    const pBrandSelectedZapa = document.createElement("p");
+    const divModelPriceSelectedZapa = document.createElement("div");
+    const pModelSelectedZapa = document.createElement("p");
+    const pPriceSelectedZapa = document.createElement("p");
+    const divInfoBtnSelectedZapa = document.createElement("div");
+    const pCantidad = document.createElement("p");
+
+    // Botones de control
+    const btnRestar = document.createElement("button");
+    const btnEliminar = document.createElement("button");
+   const btnSumar = document.createElement("button");
+    divPrintedSelectedZapa.classList.add("divPSZ");
+    imgSelectedZapa.src = zapa.imagen;
+    imgSelectedZapa.alt = zapa.modelo;
+    pBrandSelectedZapa.textContent = zapa.marca;
+    pModelSelectedZapa.textContent = zapa.modelo;
+    pPriceSelectedZapa.textContent = `${zapa.precio}€`;
+    pCantidad.textContent = `x${zapa.cantidad}`;
+
+    btnRestar.textContent = "➖";
+    btnEliminar.textContent = "❌";
+    btnSumar.textContent = "➕";
+
+    // Eventos
+    figureSelectedZapa.addEventListener("click", () => {
+      window.open(zapa.enlace, "_blank");
+    });
+
+   btnSumar.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (zapa.cantidad >= 1) {
+        zapa.cantidad += 1;
+      } else {
+        zapatillasSeleccionadas = zapatillasSeleccionadas.filter(item => item.modelo !== zapa.modelo);
+      }
+      actualizarCarrito();
+    });
+
+    btnRestar.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (zapa.cantidad > 1) {
+        zapa.cantidad -= 1;
+      } else {
+        zapatillasSeleccionadas = zapatillasSeleccionadas.filter(item => item.modelo !== zapa.modelo);
+      }
+      actualizarCarrito();
+    });
+
+    btnEliminar.addEventListener("click", (e) => {
+      e.stopPropagation();
+      zapatillasSeleccionadas = zapatillasSeleccionadas.filter(item => item.modelo !== zapa.modelo);
+      actualizarCarrito();
+    });
+
+    // Montaje de elementos
+    divZapasSeleccionadas.appendChild(divPrintedSelectedZapa);
+    divPrintedSelectedZapa.appendChild(figureSelectedZapa);
+    figureSelectedZapa.appendChild(imgSelectedZapa);
+    divPrintedSelectedZapa.appendChild(divInfoSelectedZapa);
+    divInfoSelectedZapa.appendChild(pBrandSelectedZapa);
+    divInfoSelectedZapa.appendChild(divModelPriceSelectedZapa);
+    divModelPriceSelectedZapa.appendChild(pModelSelectedZapa);
+    divModelPriceSelectedZapa.appendChild(pPriceSelectedZapa);
+    divModelPriceSelectedZapa.appendChild(pCantidad);
+    divInfoSelectedZapa.appendChild(divInfoBtnSelectedZapa);
+    divInfoBtnSelectedZapa.appendChild(btnSumar);
+    divInfoBtnSelectedZapa.appendChild(btnRestar);
+    divInfoBtnSelectedZapa.appendChild(btnEliminar);
+  
+  }
+};
+
+// FUNCIÓN ACTUALIZAR CARRITO (contador + impresión)
+const actualizarCarrito = () => {
+  let totalCantidad = zapatillasSeleccionadas.reduce((acc, item) => acc + item.cantidad, 0);
+  numberOfItemsSold.textContent = totalCantidad || "";
+  if (totalCantidad > 0) {
+    numberOfItemsSold.classList.add("shopping");
+  } else {
+    numberOfItemsSold.classList.remove("shopping");
+  }
+  printSelectedZapas();
+};
 
 //FUNCIÓN FILTRO
 const filter = () => {
