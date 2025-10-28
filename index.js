@@ -356,6 +356,15 @@ main.appendChild(zapasSection);
 
 let zapatillasSeleccionadas = JSON.parse(localStorage.getItem("zapatillasSeleccionadas")) || [];
 
+if (zapatillasSeleccionadas.length > 0) {
+  numberOfItemsSold.textContent = zapatillasSeleccionadas.reduce((acc, item) => acc + item.cantidad, 0);
+  numberOfItemsSold.classList.add("shopping");
+} else {
+  numberOfItemsSold.textContent = "";
+  numberOfItemsSold.classList.remove("shopping");
+}
+
+
 // FUNCIÓN AÑADIR ZAPAS AL CARRITO
 const addToCart = (zapa) => {
   // Buscar si ya existe en el carrito
