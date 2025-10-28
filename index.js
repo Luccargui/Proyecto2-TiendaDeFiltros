@@ -356,13 +356,6 @@ main.appendChild(zapasSection);
 
 let zapatillasSeleccionadas = JSON.parse(localStorage.getItem("zapatillasSeleccionadas")) || [];
 
-if (zapatillasSeleccionadas.length > 0) {
-  numberOfItemsSold.textContent = zapatillasSeleccionadas.reduce((acc, item) => acc + item.cantidad, 0);
-  numberOfItemsSold.classList.add("shopping");
-} else {
-  numberOfItemsSold.textContent = "";
-  numberOfItemsSold.classList.remove("shopping");
-}
 
 
 // FUNCIÓN AÑADIR ZAPAS AL CARRITO
@@ -541,14 +534,16 @@ const printSelectedZapas = () => {
 const actualizarCarrito = () => {
   let totalCantidad = zapatillasSeleccionadas.reduce((acc, item) => acc + item.cantidad, 0);
   numberOfItemsSold.textContent = totalCantidad || "";
- localStorage.getItem("class") || "";
-  if (totalCantidad > 0) {
-    numberOfItemsSold.classList.add("shopping");
-    localStorage.setItem("class", "shopping");
-  } else {
-    numberOfItemsSold.classList.remove("shopping");
-    localStorage.setItem("class", "");
-  }
+// Restaurar clase "shopping" desde localStorage al recargar
+const savedClass = localStorage.getItem("class");
+if (savedClass === "shopping" && zapatillasSeleccionadas.length > 0) {
+  numberOfItemsSold.classList.add("shopping");
+  numberOfItemsSold.textContent = zapatillasSeleccionadas.reduce((acc, item) => acc + item.cantidad, 0);
+} else {
+  numberOfItemsSold.classList.remove("shopping");
+  numberOfItemsSold.textContent = "";
+}
+
   printSelectedZapas();
 };
 
