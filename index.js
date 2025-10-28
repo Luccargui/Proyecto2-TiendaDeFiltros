@@ -533,8 +533,10 @@ const actualizarCarrito = () => {
   numberOfItemsSold.textContent = totalCantidad || "";
   if (totalCantidad > 0) {
     numberOfItemsSold.classList.add("shopping");
+    localStorage.setItem("numberOfItemsSold", JSON.stringify(numberOfItemsSold));
   } else {
     numberOfItemsSold.classList.remove("shopping");
+    localStorage.setItem("numberOfItemsSold", JSON.stringify(numberOfItemsSold));
   }
   printSelectedZapas();
 };
