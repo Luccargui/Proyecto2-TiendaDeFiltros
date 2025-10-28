@@ -407,9 +407,9 @@ const printZapas = (zapas) => {
     // Eventos
   buyButton.addEventListener("click", (e) => {
   e.stopPropagation(); // evita que cierre el carrito
-  localStorage.setItem("zapatillasSeleccionadas", JSON.stringify(zapatillasSeleccionadas));
   addToCart(zapa);
-});
+  localStorage.setItem("zapatillasSeleccionadas", JSON.stringify(zapatillasSeleccionadas));
+ });
     imgCard.addEventListener("click", () => {
       window.open(zapa.enlace, "_blank");
     });
@@ -532,21 +532,16 @@ const printSelectedZapas = () => {
 // FUNCIÓN ACTUALIZAR CARRITO (contador + impresión)
 
 const actualizarCarrito = () => {
-  let totalCantidad = zapatillasSeleccionadas.reduce((acc, item) => acc + item.cantidad, 0);
+  const totalCantidad = zapatillasSeleccionadas.reduce((acc, item) => acc + item.cantidad, 0);
   numberOfItemsSold.textContent = totalCantidad || "";
-// Restaurar clase "shopping" desde localStorage al recargar
-const savedClass = localStorage.getItem("class");
-if (savedClass === "shopping" && zapatillasSeleccionadas.length > 0) {
-  numberOfItemsSold.classList.add("shopping");
-  numberOfItemsSold.textContent = zapatillasSeleccionadas.reduce((acc, item) => acc + item.cantidad, 0);
-} else {
-  numberOfItemsSold.classList.remove("shopping");
-  numberOfItemsSold.textContent = "";
-}
-
+  if (totalCantidad > 0) {
+    numberOfItemsSold.classList.add("shopping");
+  } else {
+    numberOfItemsSold.classList.remove("shopping");
+  }
+  localStorage.setItem("zapatillasSeleccionadas", JSON.stringify(zapatillasSeleccionadas));
   printSelectedZapas();
 };
-
 //FUNCIÓN FILTRO
 const filter = () => {
   const marcaSeleccionada = selectBrands.value;
