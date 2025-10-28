@@ -528,15 +528,17 @@ const printSelectedZapas = () => {
 };
 
 // FUNCIÓN ACTUALIZAR CARRITO (contador + impresión)
+
 const actualizarCarrito = () => {
   let totalCantidad = zapatillasSeleccionadas.reduce((acc, item) => acc + item.cantidad, 0);
   numberOfItemsSold.textContent = totalCantidad || "";
+ localStorage.getItem("class") || "";
   if (totalCantidad > 0) {
     numberOfItemsSold.classList.add("shopping");
-    localStorage.setItem("numberOfItemsSold", JSON.stringify(numberOfItemsSold));
+    localStorage.setItem("class", "shopping");
   } else {
     numberOfItemsSold.classList.remove("shopping");
-    localStorage.setItem("numberOfItemsSold", JSON.stringify(numberOfItemsSold));
+    localStorage.setItem("class", "");
   }
   printSelectedZapas();
 };
