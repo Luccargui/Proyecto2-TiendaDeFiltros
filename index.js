@@ -354,7 +354,7 @@ const zapasSection = document.createElement("section");
   zapasSection.id = "zapas";
 main.appendChild(zapasSection);
 
-let zapatillasSeleccionadas = [];
+let zapatillasSeleccionadas = JSON.parse(localStorage.getItem("zapatillasSeleccionadas")) || [];
 
 // FUNCIÓN AÑADIR ZAPAS AL CARRITO
 const addToCart = (zapa) => {
@@ -405,6 +405,7 @@ const printZapas = (zapas) => {
     // Eventos
   buyButton.addEventListener("click", (e) => {
   e.stopPropagation(); // evita que cierre el carrito
+  localStorage.setItem("zapatillasSeleccionadas", JSON.stringify(zapatillasSeleccionadas));
   addToCart(zapa);
 });
     imgCard.addEventListener("click", () => {
@@ -483,6 +484,7 @@ const printSelectedZapas = () => {
       e.stopPropagation();
       if (zapa.cantidad >= 1) {
         zapa.cantidad += 1;
+        localStorage.setItem("zapatillasSeleccionadas", JSON.stringify(zapatillasSeleccionadas));
       } else {
         zapatillasSeleccionadas = zapatillasSeleccionadas.filter(item => item.modelo !== zapa.modelo);
       }
@@ -496,12 +498,14 @@ const printSelectedZapas = () => {
       } else {
         zapatillasSeleccionadas = zapatillasSeleccionadas.filter(item => item.modelo !== zapa.modelo);
       }
+      localStorage.setItem("zapatillasSeleccionadas", JSON.stringify(zapatillasSeleccionadas));
       actualizarCarrito();
     });
 
     btnEliminar.addEventListener("click", (e) => {
       e.stopPropagation();
       zapatillasSeleccionadas = zapatillasSeleccionadas.filter(item => item.modelo !== zapa.modelo);
+      localStorage.setItem("zapatillasSeleccionadas", JSON.stringify(zapatillasSeleccionadas));
       actualizarCarrito();
     });
 
