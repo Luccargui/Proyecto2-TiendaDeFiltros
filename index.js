@@ -373,6 +373,11 @@ const addToCart = (zapa) => {
   let totalCantidad = zapatillasSeleccionadas.reduce((acc, item) => acc + item.cantidad, 0);
   numberOfItemsSold.textContent = totalCantidad;
   numberOfItemsSold.classList.add("shopping");
+  if(numberOfItemsSold.className === "shopping") {
+    sessionStorage.setItem("class", "shopping");
+  } else{
+    sessionStorage.setItem("class","");
+  }
 
   // Imprimir carrito en vivo
   printSelectedZapas();
@@ -538,6 +543,11 @@ const actualizarCarrito = () => {
     numberOfItemsSold.classList.add("shopping");
   } else {
     numberOfItemsSold.classList.remove("shopping");
+  }
+    if(numberOfItemsSold.className === "shopping") {
+    sessionStorage.setItem("class", "shopping");
+  } else{
+    sessionStorage.setItem("class","");
   }
   localStorage.setItem("zapatillasSeleccionadas", JSON.stringify(zapatillasSeleccionadas));
   printSelectedZapas();
